@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Raphael Girard — CV professionnel</title>
+  <style>
+    :root{
+      --crimson:#DC143C; /* crimson */
+      --brand-blue:#1E90FF; /* blue */
+      --neon-purple:#B200FF; /* neon purple */
+      --metallic-grey:#A9A9A9; /* metallic grey */
+      --bg:#0f0f12;
+      --paper:#ffffff;
+      --text:#111;
+      --muted:#555;
+      --max-width:900px;
+      --pad:20px;
+      font-family: Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body{background:linear-gradient(180deg,#0b0b0d 0%, #111 60%); color:var(--text); margin:0; padding:40px; display:flex; justify-content:center;}
+    .cv{width:100%; max-width:var(--max-width); background:linear-gradient(180deg, #fff 0%, #fbfbfb 100%); border-radius:8px; box-shadow:0 8px 30px rgba(2,6,23,0.6); overflow:hidden}
+    header{display:flex; align-items:center; gap:20px; padding:var(--pad); background:linear-gradient(90deg,var(--metallic-grey), #f7f7f7);}
+    .avatar{width:88px; height:88px; border-radius:12px; background:linear-gradient(135deg,var(--neon-purple), var(--brand-blue)); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:30px}
+    .name{font-size:22px; font-weight:800; color:var(--crimson);}
+    .contact{color:var(--muted); font-size:14px}
+    main{display:grid; grid-template-columns: 1fr 320px; gap:24px; padding:var(--pad)}
+    .section{padding:14px 0; border-bottom:1px solid rgba(0,0,0,0.05)}
+    h2{margin:0 0 8px 0; font-size:16px; color:var(--brand-blue)}
+    ul{margin:6px 0 14px 18px}
+    .left .section p, .left .section li{color:#222; line-height:1.4}
+    .right{background:linear-gradient(180deg,#fafafa,#f5f5f5); padding:18px; border-left:1px solid rgba(0,0,0,0.04)}
+    .pill{display:inline-block; padding:6px 8px; margin:6px 6px 6px 0; border-radius:999px; font-size:13px; background:linear-gradient(90deg,var(--crimson),var(--neon-purple)); color:white}
+    .tools li, .capabilities li, .advantages li{margin-bottom:8px}
+    .edu-item, .exp-item{margin-bottom:12px}
+    footer{padding:12px 18px; display:flex; justify-content:flex-end; gap:8px; align-items:center}
+    .btn{background:var(--brand-blue); color:white; border:0; padding:10px 12px; border-radius:6px; cursor:pointer}
+    .btn.print{background:linear-gradient(90deg,var(--neon-purple),var(--brand-blue))}
+    
+    /* Animated decorative elements styles */
+    .animated-arrow {
+      position: fixed;
+      z-index: 10;
+      border-radius: 50%;
+      transition: all 0.6s ease;
+      animation: float 3s ease-in-out infinite;
+      color: white;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    
+    /* Background positioned arrows */
+    .arrow-1 { right: 5%; padding: 6px; }
+    .arrow-2 { left: 3%; padding: 8px; }
+    .arrow-3 { right: 8%; padding: 7px; }
+    .arrow-4 { left: 5%; padding: 9px; }
+    .arrow-5 { right: 2%; padding: 5px; }
+    
+    /* Trail effects */
+    .arrow-trail {
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to top, transparent, #B200FF80, #B200FF, #B200FFCC, transparent);
+      border-radius: 3px;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px #B200FF40;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-8px) rotate(2deg); }
+      66% { transform: translateY(-4px) rotate(-1deg); }
+    }
+    
+    /* Arrow SVG styles */
+    .arrow-svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    
+    @media (max-width:900px){main{grid-template-columns:1fr;}.right{order:2}}
+    /* Print styles */
+    @media print{body{background:white} .cv{box-shadow:none; border-radius:0} header{background:transparent} .right{background:transparent; border-left:none} footer{display:none}}
+  </style>
+</head>
+<body>
+  <div class="cv" role="document">
+    <header>
+      <div class="avatar" aria-hidden="true">RG</div>
+      <div style="flex:1">
+        <div class="name">RAPHAEL GIRARD</div>
+        <div class="contact">1565 rue Beauharnois, Longueuil | T: 514-220-8370 | xxraphaelgirardxx@gmail.com</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:700;color:var(--muted)">Étudiant / Superviseur</div>
+        <div style="font-size:12px;color:var(--muted)">Bilingue FR / EN • Développeur GenAI (specialisation) en cours</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="left">
+        <div class="section">
+          <h2>OBJECTIF DE CARRIÈRE</h2>
+          <p>Étudiant ambitieux, débrouillard, persévérant et sociable désirant participer au développement d'une entreprise de sa région. Débutant la première compagnie Lafleche.</p>
+        </div>
+
+        <div class="section">
+          <h2>SOMMAIRE</h2>
+          <ul>
+            <li>Excellent esprit d'équipe</li>
+            <li>Désire apprendre — dynamique et persévérant</li>
+            <li>Expérience avec divers systèmes informatiques</li>
+            <li>Parfaitement bilingue (FR/EN)</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>EXPÉRIENCE</h2>
+          <div class="exp-item">
+            <strong>Tyt</strong> — Superviseur (2021–2025)<br>
+            <small class="muted">Superviseur: Joey Gregoire Potvin — +1 (819) 388-1934</small>
+            <ul>
+              <li>Opérateur machinerie lourde & superviseur de soir</li>
+              <li>Conduite d'un loader 370, déneigement, transbordement d'acier</li>
+              <li>Chargement avec stacker Hyster; travail avec aimants Winkle; conduite d'un train (Rail King)</li>
+              <li>Supervision d'équipe et gestion des opérations ferroviaires</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <strong>Mucho Burrito</strong> — Manager / Cuisinier (2019–2021)<br>
+            <small class="muted">Propriétaire: Bill Morency — +1 (514) 241-8279</small>
+            <ul>
+              <li>Gestion des inventaires, planification des horaires, comptage de caisse</li>
+              <li>Ouverture & fermeture, supervision du personnel</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <strong>Autres expériences</strong> — 2016–2019<br>
+            <ul>
+              <li>Pays des Merveilles — Préposé aux manèges (été 2019)</li>
+              <li>McDonald (Porte Du Nord) — Cuisinier (2018–2019)</li>
+              <li>Club de Soccer de Laurentides — Arbitre (2017)</li>
+              <li>Tim Horton St-Jérôme — Plongeur / maintenance (2016)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>ÉDUCATION</h2>
+          <div class="edu-item">
+            <strong>Laurentian Regional High School</strong> — Secondaire 5, Lachute, QC
+          </div>
+          <div class="edu-item">
+            <strong>Collège Vanier</strong> — 2 ans en Psychologie sportive (en cours)
+          </div>
+          <div class="edu-item">
+            <strong>CEGEP CDI</strong> — Spécialiste en intelligence artificielle, spécialisation GenAI Developer (en cours)
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>INTÉRÊTS</h2>
+          <ul>
+            <li>Soccer — Défenseur pour les Ambassadeurs de St-Jérôme (AA)</li>
+            <li>Hockey — Attaquant pour les Blues de Lachute</li>
+            <li>Passionné de sports et de musique</li>
+          </ul>
+        </div>
+      </section>
+
+      <aside class="right">
+        <div class="section">
+          <h2>CAPACITÉS CLÉS</h2>
+          <ul class="capabilities">
+            <li>Leadership et supervision d'équipes</li>
+            <li>Opération de machinerie lourde (loader 370)</li>
+            <li>Gestion d'inventaire et responsabilités de caisse</li>
+            <li>Adaptabilité et apprentissage rapide</li>
+            <li>Communication bilingue FR/EN</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>OUTILS & ÉQUIPEMENTS</h2>
+          <ul class="tools">
+            <li>Loader 370</li>
+            <li>Stacker Hyster (chargement/entreposage)</li>
+            <li>Rail King (conduite de train)</li>
+            <li>Aimants Winkle, transbordement d'acier</li>
+            <li>Expérience avec systèmes informatiques de point de vente</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>AVANTAGES</h2>
+          <ul class="advantages">
+            <li>Expérience pratique en supervision et opérations</li>
+            <li>Esprit d'équipe solide et sens des responsabilités</li>
+            <li>Formation en IA / GenAI en cours — positionnement pour rôles tech</li>
+            <li>Capacité à travailler sous pression et à gérer horaires</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>LANGUES</h2>
+          <div><span class="pill">Français — Natif</span><span class="pill" style="background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple))">Anglais — Courant</span></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <button class="btn" onclick="location.href='lafleche.html'" aria-label="Retour à la page d'accueil">← Retour à l'accueil</button>
+      <button class="btn print" onclick="window.print()" aria-label="Imprimer le CV">Imprimer / Exporter en PDF</button>
+      <button class="btn" onclick="location.href='#contact'">Contact</button>
+    </footer>
+  </div>
+
+  <!-- Animated decorative elements with trails -->
+  <div class="animated-arrow arrow-1" id="arrow1">
+      <div class="arrow-trail" id="trail1"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Train Icon -->
+        <rect x="3" y="8" width="18" height="8" rx="2" ry="2"/>
+        <rect x="5" y="10" width="3" height="2"/>
+        <rect x="9" y="10" width="3" height="2"/>
+        <rect x="13" y="10" width="3" height="2"/>
+        <rect x="17" y="10" width="2" height="2"/>
+        <circle cx="6" cy="17" r="1.5"/>
+        <circle cx="18" cy="17" r="1.5"/>
+        <rect x="2" y="6" width="2" height="4"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-2" id="arrow2">
+      <div class="arrow-trail" id="trail2"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Car Icon -->
+        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-3" id="arrow3">
+      <div class="arrow-trail" id="trail3"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Bus Icon -->
+        <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-4" id="arrow4">
+      <div class="arrow-trail" id="trail4"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Plane Icon -->
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-5" id="arrow5">
+      <div class="arrow-trail" id="trail5"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Boat Icon -->
+        <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.32-.42-.58-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.46.26-.58.5s-.14.52-.06.78L3.95 19z"/>
+      </svg>
+  </div>
+
+  <script>
+    // Theme colors
+    const themeColors = {
+      metallicGrey: '#A9A9A9',
+      crimson: '#DC143C',
+      brandBlue: '#1E90FF',
+      neonPurple: '#B200FF'
+    };
+
+    // Color gradients for each arrow based on scroll position
+    const colorGradients = [
+      [themeColors.brandBlue, themeColors.neonPurple],
+      [themeColors.crimson, themeColors.brandBlue],
+      [themeColors.neonPurple, themeColors.crimson],
+      [themeColors.metallicGrey, themeColors.neonPurple],
+      [themeColors.brandBlue, themeColors.crimson]
+    ];
+
+    // Arrow sequence data - each arrow appears at different scroll percentages
+    const arrowSequence = [
+      { startPercent: 0, endPercent: 0.2, position: { right: '5%' } },
+      { startPercent: 0.15, endPercent: 0.4, position: { left: '3%' } },
+      { startPercent: 0.3, endPercent: 0.6, position: { right: '8%' } },
+      { startPercent: 0.5, endPercent: 0.8, position: { left: '5%' } },
+      { startPercent: 0.7, endPercent: 0.95, position: { right: '2%' } }
+    ];
+
+    // Function to interpolate between two colors
+    function interpolateColor(color1, color2, factor) {
+      const rgb1 = hexToRgb(color1);
+      const rgb2 = hexToRgb(color2);
+      
+      const r = Math.round(rgb1.r + (rgb2.r - rgb1.r) * factor);
+      const g = Math.round(rgb1.g + (rgb2.g - rgb1.g) * factor);
+      const b = Math.round(rgb1.b + (rgb2.b - rgb1.b) * factor);
+      
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Convert hex to RGB
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    // Update arrow visibility and position based on scroll
+    function updateArrowsSequence() {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const clampedPercent = Math.max(0, Math.min(1, scrollPercent));
+
+      for (let i = 1; i <= 5; i++) {
+        const arrow = document.getElementById(`arrow${i}`);
+        const trail = document.getElementById(`trail${i}`);
+        const sequence = arrowSequence[i - 1];
+        const gradient = colorGradients[i - 1];
+        
+        // Calculate visibility based on scroll position
+        let visibility = 0;
+        if (clampedPercent >= sequence.startPercent && clampedPercent <= sequence.endPercent) {
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          
+          // Fade in and out effect
+          if (sequenceProgress <= 0.2) {
+            visibility = sequenceProgress / 0.2; // Fade in
+          } else if (sequenceProgress >= 0.8) {
+            visibility = (1 - sequenceProgress) / 0.2; // Fade out
+          } else {
+            visibility = 1; // Fully visible
+          }
+        }
+
+        // Set arrow opacity and display
+        arrow.style.opacity = visibility;
+        arrow.style.display = visibility > 0 ? 'block' : 'none';
+
+        if (visibility > 0) {
+          // Position arrow based on scroll progress within its sequence
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          const topPosition = 20 + (sequenceProgress * 60); // Move from 20% to 80% of viewport
+          
+          arrow.style.top = `${topPosition}%`;
+          
+          // Apply positioning
+          if (sequence.position.right) {
+            arrow.style.right = sequence.position.right;
+            arrow.style.left = 'auto';
+          } else {
+            arrow.style.left = sequence.position.left;
+            arrow.style.right = 'auto';
+          }
+          
+          // Color interpolation
+          const interpolatedColor = interpolateColor(gradient[0], gradient[1], clampedPercent);
+          arrow.style.background = `linear-gradient(135deg, ${gradient[0]}, ${interpolatedColor})`;
+          arrow.style.boxShadow = `0 4px 15px ${interpolatedColor}40`;
+          
+          // Update trail effect
+          const arrowRect = arrow.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          const totalMovement = (arrowConfig.endPercent - arrowConfig.startPercent) * (document.documentElement.scrollHeight - viewportHeight) / 100;
+          const currentMovement = (scrollPercent - arrowConfig.startPercent) * (document.documentElement.scrollHeight - viewportHeight) / 100;
+          const progressRatio = Math.min(Math.max(currentMovement / totalMovement, 0), 1);
+          
+          const trailHeight = totalMovement * progressRatio;
+          trail.style.height = `${trailHeight}px`;
+          trail.style.bottom = `calc(100% + 5px)`;
+          trail.style.opacity = visibility * 0.9;
+        }
+      }
+
+      // Hide all arrows when reaching the very bottom (95%+)
+      if (clampedPercent >= 0.95) {
+        for (let i = 1; i <= 5; i++) {
+          const arrow = document.getElementById(`arrow${i}`);
+          arrow.style.opacity = 0;
+          arrow.style.display = 'none';
+        }
+      }
+    }
+
+    // Initialize and set up scroll listener
+    document.addEventListener('DOMContentLoaded', function() {
+      updateArrowsSequence();
+      
+      // Throttled scroll listener for better performance
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            updateArrowsSequence();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

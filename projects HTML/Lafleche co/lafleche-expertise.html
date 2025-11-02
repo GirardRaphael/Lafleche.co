@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lafleche AI Expertise — Transport & Logistics Solutions</title>
+  <meta name="description" content="Discover how Lafleche's AI-powered solutions transform logistics with proven fuel savings, reliability, and efficiency." />
+  <style>
+    :root{
+      --metallic-grey:#A9A9A9;
+      --crimson:#DC143C;
+      --brand-blue:#1E90FF;
+      --neon-purple:#B200FF;
+      --bg:#0a0a0f;
+      --text:#111;
+      --muted:#555;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:linear-gradient(180deg,var(--bg),#0f1220);color:var(--text);overflow-x:hidden}
+    
+    /* Header */
+    header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:15px 5%;
+      background:linear-gradient(90deg,var(--metallic-grey),#f7f7f7);
+      box-shadow:0 4px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .logo-container{display:flex;align-items:center;gap:12px}
+    .logo{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--neon-purple),var(--brand-blue));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;box-shadow:0 4px 15px rgba(178,0,255,0.4);cursor:pointer;text-decoration:none;transition:transform 0.3s}
+    .logo:hover{animation:bounce 0.6s ease}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .company-name{font-size:24px;font-weight:800;color:var(--crimson);letter-spacing:-0.5px}
+    .tagline{font-size:11px;color:var(--muted)}
+    
+    /* Desktop Navigation */
+    nav{display:flex;align-items:center}
+    nav a{margin-left:24px;color:#222;text-decoration:none;font-weight:600;transition:color 0.3s}
+    nav a:hover{color:var(--brand-blue)}
+    
+    /* Mobile Menu */
+    .mobile-menu-btn{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      padding:5px;
+      background:none;
+      border:none;
+      z-index:1001;
+    }
+    .mobile-menu-btn span{
+      width:25px;
+      height:3px;
+      background:var(--crimson);
+      margin:3px 0;
+      transition:0.3s;
+      border-radius:2px;
+    }
+    .mobile-menu-btn.active span:nth-child(1){transform:rotate(-45deg) translate(-5px, 6px)}
+    .mobile-menu-btn.active span:nth-child(2){opacity:0}
+    .mobile-menu-btn.active span:nth-child(3){transform:rotate(45deg) translate(-5px, -6px)}
+    
+    .mobile-nav{
+      display:none;
+      position:fixed;
+      top:70px;
+      left:0;
+      right:0;
+      background:linear-gradient(180deg,rgba(247,247,247,0.98),rgba(169,169,169,0.98));
+      backdrop-filter:blur(15px);
+      padding:20px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.2);
+      z-index:999;
+    }
+    .mobile-nav.active{display:block}
+    .mobile-nav a{
+      display:block;
+      padding:15px 0;
+      color:#222;
+      text-decoration:none;
+      font-weight:600;
+      font-size:18px;
+      border-bottom:1px solid rgba(0,0,0,0.1);
+      transition:color 0.3s;
+    }
+    .mobile-nav a:hover{color:var(--brand-blue)}
+    .mobile-nav a:last-child{border-bottom:none}
+    
+    /* Hero */
+    .hero{background:linear-gradient(135deg,rgba(178,0,255,0.08),rgba(30,144,255,0.08));padding:80px 5% 60px;text-align:center;margin-top:70px}
+    .hero h1{font-size:42px;margin-bottom:15px;background:linear-gradient(90deg,var(--crimson),var(--neon-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:18px;color:#ddd;max-width:800px;margin:0 auto;line-height:1.6}
+    
+    /* Container */
+    .container{max-width:1200px;margin:0 auto;padding:50px 5%;background:#fff;border-radius:12px;margin-top:-30px;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+    
+    /* AI Models Section */
+    .ai-models-section{margin-bottom:60px;padding:40px;background:linear-gradient(135deg,rgba(30,144,255,0.03),rgba(178,0,255,0.03));border-radius:12px}
+    .ai-models-section h2{font-size:36px;color:var(--brand-blue);margin-bottom:15px;text-align:center}
+    .section-intro{text-align:center;color:var(--muted);font-size:18px;margin-bottom:40px;max-width:900px;margin-left:auto;margin-right:auto}
+    .models-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .model-card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);border-top:4px solid var(--neon-purple);transition:transform 0.3s}
+    .model-card:hover{transform:translateY(-5px)}
+    .model-icon{font-size:48px;margin-bottom:15px}
+    .model-card h3{color:var(--crimson);margin-bottom:15px;font-size:22px}
+    .model-card p{color:var(--muted);line-height:1.6;margin-bottom:10px}
+    .model-card p strong{color:#333}
+    
+    /* Integration Timeline */
+    .integration-timeline{margin-bottom:60px;padding:40px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+    .integration-timeline h2{font-size:36px;color:var(--brand-blue);margin-bottom:15px;text-align:center}
+    .timeline{margin-top:40px;position:relative;padding-left:40px}
+    .timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--brand-blue),var(--neon-purple))}
+    .timeline-item{position:relative;margin-bottom:40px;padding-left:30px}
+    .timeline-marker{position:absolute;left:-32px;top:0;background:linear-gradient(135deg,var(--crimson),var(--neon-purple));color:#fff;padding:8px 12px;border-radius:20px;font-weight:700;font-size:14px;white-space:nowrap}
+    .timeline-content{background:linear-gradient(180deg,#fafafe,#fff);padding:20px;border-radius:10px;border-left:3px solid var(--brand-blue)}
+    .timeline-content h3{color:var(--crimson);margin-bottom:12px;font-size:20px}
+    .timeline-content p{color:var(--muted);line-height:1.8}
+    
+    /* Savings Graph */
+    .savings-graph-section{margin-bottom:60px;padding:40px;background:linear-gradient(180deg,#f8f8ff,#fff);border-radius:12px}
+    .savings-graph-section h2{font-size:36px;color:var(--brand-blue);margin-bottom:15px;text-align:center}
+    .graph-container{background:#fff;padding:30px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06);margin-bottom:30px;overflow-x:auto}
+    .graph-insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+    .insight-card{background:linear-gradient(135deg,rgba(220,20,60,0.05),rgba(178,0,255,0.05));padding:24px;border-radius:12px;text-align:center;border:2px solid rgba(30,144,255,0.2)}
+    .insight-number{font-size:42px;font-weight:900;background:linear-gradient(90deg,var(--crimson),var(--neon-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+    .insight-card p{color:var(--muted);font-weight:600}
+    
+    /* Implementation Plan */
+    .implementation-plan{margin-bottom:60px;padding:40px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+    .implementation-plan h2{font-size:36px;color:var(--brand-blue);margin-bottom:40px;text-align:center}
+    .plan-phases{display:grid;gap:24px;margin-bottom:40px}
+    .phase-card{background:linear-gradient(180deg,#fafafe,#fff);border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
+    .phase-header{background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));color:#fff;padding:20px;display:flex;align-items:center;gap:15px}
+    .phase-number{background:rgba(255,255,255,0.2);padding:8px 16px;border-radius:20px;font-weight:700;font-size:14px}
+    .phase-header h3{margin:0;font-size:24px}
+    .phase-content{padding:24px}
+    .phase-content h4{color:var(--crimson);margin:15px 0 10px;font-size:18px}
+    .phase-content ul{margin-left:20px;color:var(--muted);line-height:1.8}
+    .phase-content li{margin-bottom:8px}
+    .plan-summary{background:linear-gradient(135deg,rgba(30,144,255,0.05),rgba(178,0,255,0.05));padding:30px;border-radius:12px;border:2px solid var(--brand-blue)}
+    .plan-summary h3{color:var(--brand-blue);margin-bottom:20px;font-size:24px;text-align:center}
+    .outcomes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+    .outcome{background:#fff;padding:15px;border-radius:8px;color:var(--muted);font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+    
+    /* CTA Section */
+    .cta-section{text-align:center;padding:40px;background:linear-gradient(90deg,rgba(220,20,60,0.05),rgba(178,0,255,0.05));border-radius:12px;margin-bottom:40px}
+    .cta-section h2{font-size:32px;color:var(--crimson);margin-bottom:20px}
+    .cta-section p{font-size:18px;color:var(--muted);margin-bottom:25px}
+    .cta-btn{display:inline-block;padding:16px 32px;background:linear-gradient(90deg,var(--crimson),var(--neon-purple));color:#fff;border:none;border-radius:50px;font-size:18px;font-weight:700;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;text-decoration:none}
+    .cta-btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(178,0,255,0.5)}
+    .back-home-btn{display:inline-block;padding:12px 24px;background:linear-gradient(90deg,var(--metallic-grey),#666);color:#fff;border:none;border-radius:25px;font-size:16px;font-weight:600;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;text-decoration:none;margin-top:20px}
+    .back-home-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.3)}
+    
+    /* Footer */
+    footer{background:linear-gradient(90deg,var(--metallic-grey),#333);color:#fff;text-align:center;padding:30px 5%;margin-top:40px}
+    footer p{margin-bottom:10px}
+    
+    /* Animated decorative elements styles */
+    .animated-arrow {
+      position: fixed;
+      z-index: 10;
+      border-radius: 50%;
+      transition: all 0.6s ease;
+      animation: float 3s ease-in-out infinite;
+      color: white;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    
+    /* Background positioned arrows */
+    .arrow-1 { right: 5%; padding: 6px; }
+    .arrow-2 { left: 3%; padding: 8px; }
+    .arrow-3 { right: 8%; padding: 7px; }
+    .arrow-4 { left: 5%; padding: 9px; }
+    .arrow-5 { right: 2%; padding: 5px; }
+    
+    /* Trail effects */
+    .arrow-trail {
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to top, transparent, #B200FF80, #B200FF, #B200FFCC, transparent);
+      border-radius: 3px;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px #B200FF40;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-8px) rotate(2deg); }
+      66% { transform: translateY(-4px) rotate(-1deg); }
+    }
+    
+    /* Arrow SVG styles */
+    .arrow-svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    @media (max-width:768px){
+      .hero h1{font-size:32px}
+      .models-grid,.plan-phases{grid-template-columns:1fr}
+      
+      /* Mobile Header */
+      header{padding:10px 5%}
+      .logo{width:40px;height:40px;font-size:16px}
+      .company-name{font-size:20px}
+      .tagline{font-size:10px}
+      nav{display:none}
+      .mobile-menu-btn{display:flex}
+      
+      /* Mobile responsive adjustments */
+      .hero{padding:60px 5% 40px}
+      .container{margin-top:-20px;padding:40px 5%}
+      .ai-models-section{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <a href="lafleche.html" class="logo" aria-label="Lafleche Home">LF</a>
+      <div>
+        <div class="company-name">Lafleche</div>
+        <div class="tagline">AI-Powered Logistics Excellence</div>
+      </div>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#ai-models">AI Solutions</a>
+      <a href="#timeline">Integration</a>
+      <a href="#savings">Fuel Savings</a>
+      <a href="#plan">Implementation</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle mobile menu" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#ai-models">AI Solutions</a>
+    <a href="#timeline">Integration</a>
+    <a href="#savings">Fuel Savings</a>
+    <a href="#plan">Implementation</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Transform Your Logistics with Proven AI Solutions</h1>
+    <p>Discover how Lafleche's advanced AI models deliver measurable results: 25-35% fuel savings, 99.95% reliability, and complete operational transparency. Join the companies already saving millions.</p>
+  </section>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- AI Models Section -->
+    <section id="ai-models" class="ai-models-section">
+      <h2>Our AI-Powered Solutions</h2>
+      <p class="section-intro">Lafleche leverages cutting-edge artificial intelligence to deliver measurable improvements in efficiency, cost savings, and environmental impact. Here's how our AI models transform logistics operations:</p>
+      
+      <div class="models-grid">
+        <div class="model-card">
+          <div class="model-icon">🚛</div>
+          <h3>Route Optimization AI</h3>
+          <p><strong>Technology:</strong> Machine learning algorithms analyze traffic patterns, weather, road conditions, and historical delivery data in real-time.</p>
+          <p><strong>Benefits:</strong> Reduces fuel consumption by 25-35%, cuts delivery times by 30%, and lowers carbon emissions significantly.</p>
+          <p><strong>Results:</strong> Clients save an average of $45,000 annually on fuel costs per 10-vehicle fleet.</p>
+        </div>
+        
+        <div class="model-card">
+          <div class="model-icon">⚙️</div>
+          <h3>Predictive Maintenance</h3>
+          <p><strong>Technology:</strong> IoT sensors combined with neural networks predict vehicle failures before they occur.</p>
+          <p><strong>Benefits:</strong> 90% reduction in unexpected breakdowns, 40% lower maintenance costs, 99.8% uptime guarantee.</p>
+          <p><strong>Results:</strong> Average downtime reduced from 8 days/year to less than 1 day.</p>
+        </div>
+        
+        <div class="model-card">
+          <div class="model-icon">📦</div>
+          <h3>Inventory Forecasting</h3>
+          <p><strong>Technology:</strong> Time-series analysis and demand prediction models optimize warehouse stocking levels.</p>
+          <p><strong>Benefits:</strong> Reduces overstocking by 45%, prevents stockouts, improves cash flow.</p>
+          <p><strong>Results:</strong> Clients achieve 98% inventory accuracy and reduce holding costs by $120,000/year on average.</p>
+        </div>
+        
+        <div class="model-card">
+          <div class="model-icon">📊</div>
+          <h3>Load Optimization</h3>
+          <p><strong>Technology:</strong> 3D bin-packing algorithms maximize cargo space utilization.</p>
+          <p><strong>Benefits:</strong> Increases load capacity by 22%, reduces trips needed, lowers per-unit shipping costs.</p>
+          <p><strong>Results:</strong> Clients ship the same volume with 18% fewer trucks.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:30px">
+        <a href="lafleche.html" class="back-home-btn">← Back to Home</a>
+      </div>
+    </section>
+
+    <!-- Integration Timeline -->
+    <section id="timeline" class="integration-timeline">
+      <h2>Integration Timeline: From Onboarding to Full Deployment</h2>
+      <p class="section-intro">Our proven 12-week implementation process ensures smooth adoption with minimal disruption to your operations.</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">Week 1-2</div>
+          <div class="timeline-content">
+            <h3>Assessment & Planning</h3>
+            <p>• Comprehensive audit of current logistics operations<br>
+            • Identify optimization opportunities and pain points<br>
+            • Define KPIs and success metrics<br>
+            • Customize AI models to your specific needs</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker">Week 3-4</div>
+          <div class="timeline-content">
+            <h3>Infrastructure Setup</h3>
+            <p>• Install IoT sensors and tracking devices<br>
+            • Integrate with existing ERP/TMS systems<br>
+            • Configure cloud infrastructure<br>
+            • Train core team on platform basics</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker">Week 5-7</div>
+          <div class="timeline-content">
+            <h3>Pilot Program</h3>
+            <p>• Deploy AI models on 20% of fleet/operations<br>
+            • Monitor performance and gather data<br>
+            • Fine-tune algorithms based on real-world results<br>
+            • Demonstrate measurable ROI</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker">Week 8-10</div>
+          <div class="timeline-content">
+            <h3>Full Rollout</h3>
+            <p>• Scale AI models to 100% of operations<br>
+            • Comprehensive staff training program<br>
+            • Establish 24/7 AI monitoring dashboards<br>
+            • Implement automated reporting systems</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker">Week 11-12</div>
+          <div class="timeline-content">
+            <h3>Optimization & Handover</h3>
+            <p>• Performance review and optimization<br>
+            • Document lessons learned and best practices<br>
+            • Transition to ongoing support mode<br>
+            • Celebrate measurable improvements</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:30px">
+        <a href="lafleche.html" class="back-home-btn">← Back to Home</a>
+      </div>
+    </section>
+
+    <!-- Gas Savings Graph -->
+    <section id="savings" class="savings-graph-section">
+      <h2>Proven Fuel Savings: AI vs. Traditional Methods</h2>
+      <p class="section-intro">Real data from enterprises using Lafleche AI technologies compared to traditional logistics approaches.</p>
+      
+      <div class="graph-container">
+        <canvas id="savingsChart" width="800" height="400" aria-label="Bar chart showing fuel savings comparison"></canvas>
+      </div>
+      
+      <div class="graph-insights">
+        <div class="insight-card">
+          <div class="insight-number">32%</div>
+          <p>Average fuel reduction across all AI-enabled clients</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-number">$2.4M</div>
+          <p>Total fuel cost savings generated for clients in 2024</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-number">8,500 tons</div>
+          <p>CO₂ emissions prevented through AI optimization</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:30px">
+        <a href="lafleche.html" class="back-home-btn">← Back to Home</a>
+      </div>
+    </section>
+
+    <!-- Implementation Plan -->
+    <section id="plan" class="implementation-plan">
+      <h2>Complete Implementation Plan for Enterprise Reliability, Efficiency & Transparency</h2>
+      
+      <div class="plan-phases">
+        <div class="phase-card">
+          <div class="phase-header">
+            <span class="phase-number">Phase 1</span>
+            <h3>Assessment & Foundation</h3>
+          </div>
+          <div class="phase-content">
+            <h4>Reliability Focus:</h4>
+            <ul>
+              <li>Baseline current uptime and failure rates</li>
+              <li>Implement redundancy protocols</li>
+              <li>Establish 99.9% SLA guarantees</li>
+            </ul>
+            <h4>Efficiency Focus:</h4>
+            <ul>
+              <li>Map current workflows and identify bottlenecks</li>
+              <li>Benchmark against industry standards</li>
+              <li>Set efficiency improvement targets (minimum 20%)</li>
+            </ul>
+            <h4>Transparency Focus:</h4>
+            <ul>
+              <li>Deploy real-time tracking for all assets</li>
+              <li>Create executive dashboards with live metrics</li>
+              <li>Establish weekly performance reports</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="phase-card">
+          <div class="phase-header">
+            <span class="phase-number">Phase 2</span>
+            <h3>Technology Integration</h3>
+          </div>
+          <div class="phase-content">
+            <h4>Reliability Focus:</h4>
+            <ul>
+              <li>Deploy predictive maintenance AI (target: 95% failure prevention)</li>
+              <li>Implement automated backup systems</li>
+              <li>Establish 24/7 NOC (Network Operations Center)</li>
+            </ul>
+            <h4>Efficiency Focus:</h4>
+            <ul>
+              <li>Activate route optimization AI</li>
+              <li>Roll out load optimization algorithms</li>
+              <li>Automate manual data entry (save 15+ hours/week)</li>
+            </ul>
+            <h4>Transparency Focus:</h4>
+            <ul>
+              <li>Launch customer-facing tracking portals</li>
+              <li>Implement blockchain for shipment verification</li>
+              <li>Enable API access for partners</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="phase-card">
+          <div class="phase-header">
+            <span class="phase-number">Phase 3</span>
+            <h3>Scaling & Optimization</h3>
+          </div>
+          <div class="phase-content">
+            <h4>Reliability Focus:</h4>
+            <ul>
+              <li>Achieve 99.95% uptime (industry-leading)</li>
+              <li>Implement AI-driven contingency planning</li>
+              <li>Certify ISO 9001 quality standards</li>
+            </ul>
+            <h4>Efficiency Focus:</h4>
+            <ul>
+              <li>Target 30%+ reduction in operational costs</li>
+              <li>Optimize inventory turns (6x per year minimum)</li>
+              <li>Reduce order-to-delivery time by 40%</li>
+            </ul>
+            <h4>Transparency Focus:</h4>
+            <ul>
+              <li>Publish monthly sustainability reports</li>
+              <li>Provide AI explainability for all decisions</li>
+              <li>Conduct quarterly stakeholder reviews</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="phase-card">
+          <div class="phase-header">
+            <span class="phase-number">Phase 4</span>
+            <h3>Continuous Improvement</h3>
+          </div>
+          <div class="phase-content">
+            <h4>Reliability Focus:</h4>
+            <ul>
+              <li>Zero unplanned downtime goal</li>
+              <li>Continuous AI model retraining</li>
+              <li>Proactive risk mitigation protocols</li>
+            </ul>
+            <h4>Efficiency Focus:</h4>
+            <ul>
+              <li>Quarterly efficiency audits</li>
+              <li>Deploy next-gen AI models as available</li>
+              <li>Benchmark against global best practices</li>
+            </ul>
+            <h4>Transparency Focus:</h4>
+            <ul>
+              <li>Real-time carbon footprint tracking</li>
+              <li>Open-source select algorithms for industry benefit</li>
+              <li>Annual third-party audits and certifications</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="plan-summary">
+        <h3>Expected Outcomes After Full Implementation:</h3>
+        <div class="outcomes-grid">
+          <div class="outcome">✓ 99.95% system reliability</div>
+          <div class="outcome">✓ 30-40% cost reduction</div>
+          <div class="outcome">✓ Real-time visibility across all operations</div>
+          <div class="outcome">✓ 25-35% fuel savings</div>
+          <div class="outcome">✓ Sub-1-day average downtime</div>
+          <div class="outcome">✓ Automated compliance reporting</div>
+          <div class="outcome">✓ Carbon-neutral pathway established</div>
+          <div class="outcome">✓ Customer satisfaction > 98%</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:30px">
+        <a href="lafleche.html" class="back-home-btn">← Back to Home</a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2>Ready to Transform Your Logistics?</h2>
+      <p>Schedule a consultation to see how our AI solutions can deliver measurable results for your enterprise.</p>
+      <a href="lafleche.html#contact" class="cta-btn">Contact Us Today</a>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Lafleche Transport & Logistics. All rights reserved.</p>
+    <p>AI-Powered Excellence • Proven Results • Transparent Operations</p>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      
+      mobileNav.classList.toggle('active');
+      menuBtn.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const mobileNav = document.getElementById('mobileNav');
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const header = document.querySelector('header');
+      
+      if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
+        toggleMobileMenu();
+      }
+    });
+  </script>
+
+  <!-- Fuel Savings Graph Script -->
+  <script>
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('savingsChart');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+      
+      // Data: Fuel consumption (gallons per 1000 miles)
+      const data = [
+        { label: 'Small Fleet\n(5-10 vehicles)', traditional: 650, ai: 445, color: '#DC143C' },
+        { label: 'Medium Fleet\n(11-50 vehicles)', traditional: 3200, ai: 2080, color: '#1E90FF' },
+        { label: 'Large Fleet\n(51-100 vehicles)', traditional: 7500, ai: 4875, color: '#B200FF' },
+        { label: 'Enterprise\n(100+ vehicles)', traditional: 15000, ai: 9750, color: '#A9A9A9' }
+      ];
+      
+      // Calculate max value for scaling
+      const maxValue = Math.max(...data.map(d => d.traditional));
+      const padding = 60;
+      const barWidth = 50;
+      const groupWidth = 140;
+      const chartHeight = height - padding * 2;
+      const chartWidth = width - padding * 2;
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, width, height);
+      
+      // Draw background
+      ctx.fillStyle = '#fafafa';
+      ctx.fillRect(0, 0, width, height);
+      
+      // Draw grid lines
+      ctx.strokeStyle = '#e0e0e0';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 5; i++) {
+        const y = padding + (chartHeight / 5) * i;
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(width - padding, y);
+        ctx.stroke();
+        
+        // Y-axis labels
+        const value = Math.round(maxValue - (maxValue / 5) * i);
+        ctx.fillStyle = '#666';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'right';
+        ctx.fillText(value.toLocaleString() + ' gal', padding - 10, y + 4);
+      }
+      
+      // Draw bars
+      data.forEach((item, index) => {
+        const x = padding + index * groupWidth + 30;
+        
+        // Traditional bar (red/darker)
+        const tradHeight = (item.traditional / maxValue) * chartHeight;
+        const tradY = height - padding - tradHeight;
+        
+        const gradient1 = ctx.createLinearGradient(0, tradY, 0, height - padding);
+        gradient1.addColorStop(0, item.color);
+        gradient1.addColorStop(1, item.color + '80');
+        
+        ctx.fillStyle = gradient1;
+        ctx.fillRect(x, tradY, barWidth, tradHeight);
+        ctx.strokeStyle = item.color;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x, tradY, barWidth, tradHeight);
+        
+        // AI bar (green/lighter)
+        const aiHeight = (item.ai / maxValue) * chartHeight;
+        const aiY = height - padding - aiHeight;
+        
+        const gradient2 = ctx.createLinearGradient(0, aiY, 0, height - padding);
+        gradient2.addColorStop(0, '#10B981');
+        gradient2.addColorStop(1, '#10B98180');
+        
+        ctx.fillStyle = gradient2;
+        ctx.fillRect(x + barWidth + 10, aiY, barWidth, aiHeight);
+        ctx.strokeStyle = '#059669';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x + barWidth + 10, aiY, barWidth, aiHeight);
+        
+        // Values on top of bars
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 11px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(item.traditional.toLocaleString(), x + barWidth/2, tradY - 5);
+        ctx.fillText(item.ai.toLocaleString(), x + barWidth + 10 + barWidth/2, aiY - 5);
+        
+        // Savings percentage
+        const savings = Math.round(((item.traditional - item.ai) / item.traditional) * 100);
+        ctx.fillStyle = '#059669';
+        ctx.font = 'bold 13px Arial';
+        ctx.fillText('-' + savings + '%', x + barWidth + 5, aiY - 20);
+        
+        // X-axis labels
+        ctx.fillStyle = '#444';
+        ctx.font = '11px Arial';
+        ctx.textAlign = 'center';
+        const lines = item.label.split('\n');
+        lines.forEach((line, i) => {
+          ctx.fillText(line, x + barWidth + 5, height - padding + 20 + i * 14);
+        });
+      });
+      
+      // Legend
+      const legendY = 20;
+      ctx.fillStyle = '#DC143C';
+      ctx.fillRect(width - 200, legendY, 20, 15);
+      ctx.fillStyle = '#333';
+      ctx.font = 'bold 13px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('Traditional Methods', width - 175, legendY + 12);
+      
+      ctx.fillStyle = '#10B981';
+      ctx.fillRect(width - 200, legendY + 25, 20, 15);
+      ctx.fillStyle = '#333';
+      ctx.fillText('Lafleche AI', width - 175, legendY + 37);
+      
+      // Title
+      ctx.fillStyle = '#1E90FF';
+      ctx.font = 'bold 16px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('Fuel Consumption Comparison (gallons per 1,000 miles)', padding, 30);
+      
+      // Y-axis label
+      ctx.save();
+      ctx.translate(20, height / 2);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillStyle = '#666';
+      ctx.font = 'bold 12px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('Fuel Consumption (gallons)', 0, 0);
+      ctx.restore();
+    });
+
+    // Theme colors
+    const themeColors = {
+      metallicGrey: '#A9A9A9',
+      crimson: '#DC143C',
+      brandBlue: '#1E90FF',
+      neonPurple: '#B200FF'
+    };
+
+    // Color gradients for each arrow based on scroll position
+    const colorGradients = [
+      [themeColors.brandBlue, themeColors.neonPurple],
+      [themeColors.crimson, themeColors.brandBlue],
+      [themeColors.neonPurple, themeColors.crimson],
+      [themeColors.metallicGrey, themeColors.neonPurple],
+      [themeColors.brandBlue, themeColors.crimson]
+    ];
+
+    // Function to interpolate between two colors
+    function interpolateColor(color1, color2, factor) {
+      const rgb1 = hexToRgb(color1);
+      const rgb2 = hexToRgb(color2);
+      
+      const r = Math.round(rgb1.r + (rgb2.r - rgb1.r) * factor);
+      const g = Math.round(rgb1.g + (rgb2.g - rgb1.g) * factor);
+      const b = Math.round(rgb1.b + (rgb2.b - rgb1.b) * factor);
+      
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Convert hex to RGB
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    // Update arrow colors based on scroll position
+    function updateArrowColors() {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const clampedPercent = Math.max(0, Math.min(1, scrollPercent));
+
+      for (let i = 1; i <= 5; i++) {
+        const arrow = document.getElementById(`arrow${i}`);
+        const gradient = colorGradients[i - 1];
+        const interpolatedColor = interpolateColor(gradient[0], gradient[1], clampedPercent);
+        
+        arrow.style.background = `linear-gradient(135deg, ${gradient[0]}, ${interpolatedColor})`;
+        arrow.style.boxShadow = `0 4px 15px ${interpolatedColor}40`;
+      }
+    }
+
+    // Initialize and set up scroll listener
+    document.addEventListener('DOMContentLoaded', function() {
+      updateArrowsSequence();
+      
+      // Throttled scroll listener for better performance
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            updateArrowsSequence();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    });
+
+    // Update arrow visibility and position based on scroll
+    function updateArrowsSequence() {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const clampedPercent = Math.max(0, Math.min(1, scrollPercent));
+
+      for (let i = 1; i <= 5; i++) {
+        const arrow = document.getElementById(`arrow${i}`);
+        const trail = document.getElementById(`trail${i}`);
+        const sequence = arrowSequence[i - 1];
+        const gradient = colorGradients[i - 1];
+        
+        // Calculate visibility based on scroll position
+        let visibility = 0;
+        if (clampedPercent >= sequence.startPercent && clampedPercent <= sequence.endPercent) {
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          
+          // Fade in and out effect
+          if (sequenceProgress <= 0.2) {
+            visibility = sequenceProgress / 0.2; // Fade in
+          } else if (sequenceProgress >= 0.8) {
+            visibility = (1 - sequenceProgress) / 0.2; // Fade out
+          } else {
+            visibility = 1; // Fully visible
+          }
+        }
+
+        // Set arrow opacity and display
+        arrow.style.opacity = visibility;
+        arrow.style.display = visibility > 0 ? 'block' : 'none';
+
+        if (visibility > 0) {
+          // Position arrow based on scroll progress within its sequence
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          const topPosition = 20 + (sequenceProgress * 60); // Move from 20% to 80% of viewport
+          
+          arrow.style.top = `${topPosition}%`;
+          
+          // Apply positioning
+          if (sequence.position.right) {
+            arrow.style.right = sequence.position.right;
+            arrow.style.left = 'auto';
+          } else {
+            arrow.style.left = sequence.position.left;
+            arrow.style.right = 'auto';
+          }
+          
+          // Color interpolation
+          const interpolatedColor = interpolateColor(gradient[0], gradient[1], clampedPercent);
+          arrow.style.background = `linear-gradient(135deg, ${gradient[0]}, ${interpolatedColor})`;
+          arrow.style.boxShadow = `0 4px 15px ${interpolatedColor}40`;
+          
+          // Update trail effect
+          const arrowRect = arrow.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          const totalMovement = (sequence.endPercent - sequence.startPercent) * (document.documentElement.scrollHeight - viewportHeight) / 100;
+          const currentMovement = (scrollPercent - sequence.startPercent) * (document.documentElement.scrollHeight - viewportHeight) / 100;
+          const progressRatio = Math.min(Math.max(currentMovement / totalMovement, 0), 1);
+          
+          const trailHeight = totalMovement * progressRatio;
+          trail.style.height = `${trailHeight}px`;
+          trail.style.bottom = `calc(100% + 5px)`;
+          trail.style.opacity = visibility * 0.9;
+        }
+      }
+
+      // Hide all arrows when reaching the very bottom (95%+)
+      if (clampedPercent >= 0.95) {
+        for (let i = 1; i <= 5; i++) {
+          const arrow = document.getElementById(`arrow${i}`);
+          arrow.style.opacity = 0;
+          arrow.style.display = 'none';
+        }
+      }
+    }
+
+    // Arrow sequence data - each arrow appears at different scroll percentages
+    const arrowSequence = [
+      { startPercent: 0, endPercent: 0.2, position: { right: '5%' } },
+      { startPercent: 0.15, endPercent: 0.4, position: { left: '3%' } },
+      { startPercent: 0.3, endPercent: 0.6, position: { right: '8%' } },
+      { startPercent: 0.5, endPercent: 0.8, position: { left: '5%' } },
+      { startPercent: 0.7, endPercent: 0.95, position: { right: '2%' } }
+    ];
+  </script>
+
+  <!-- Animated decorative elements with trails -->
+  <div class="animated-arrow arrow-1" id="arrow1">
+      <div class="arrow-trail" id="trail1"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Train Icon -->
+        <rect x="3" y="8" width="18" height="8" rx="2" ry="2"/>
+        <rect x="5" y="10" width="3" height="2"/>
+        <rect x="9" y="10" width="3" height="2"/>
+        <rect x="13" y="10" width="3" height="2"/>
+        <rect x="17" y="10" width="2" height="2"/>
+        <circle cx="6" cy="17" r="1.5"/>
+        <circle cx="18" cy="17" r="1.5"/>
+        <rect x="2" y="6" width="2" height="4"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-2" id="arrow2">
+      <div class="arrow-trail" id="trail2"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Car Icon -->
+        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-3" id="arrow3">
+      <div class="arrow-trail" id="trail3"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Bus Icon -->
+        <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-4" id="arrow4">
+      <div class="arrow-trail" id="trail4"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Plane Icon -->
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-5" id="arrow5">
+      <div class="arrow-trail" id="trail5"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Boat Icon -->
+        <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.32-.42-.58-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.46.26-.58.5s-.14.52-.06.78L3.95 19z"/>
+      </svg>
+  </div>
+</body>
+</html>

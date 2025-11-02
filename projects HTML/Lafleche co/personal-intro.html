@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Raphael Girard — CEO & Founder, Lafleche</title>
+  <meta name="description" content="Meet Raphael Girard, CEO and Founder of Lafleche. Learn about his journey from operations supervisor to AI-driven logistics innovator." />
+  <style>
+    :root{
+      --metallic-grey:#A9A9A9;
+      --crimson:#DC143C;
+      --brand-blue:#1E90FF;
+      --neon-purple:#B200FF;
+      --bg:#0a0a0f;
+      --text:#111;
+      --muted:#555;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:linear-gradient(180deg,var(--bg),#0f1220);color:var(--text);padding:40px 5%;display:flex;justify-content:center;align-items:center;min-height:100vh}
+    
+    .profile-container{max-width:1000px;width:100%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+    
+    /* Header */
+    .profile-header{background:linear-gradient(135deg,var(--metallic-grey),#e0e0e0);padding:40px;display:flex;gap:40px;align-items:center;border-bottom:4px solid var(--crimson)}
+    .profile-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+    .profile-photo-placeholder{width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,var(--neon-purple),var(--brand-blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:64px;font-weight:900;border:6px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+    .profile-info h1{font-size:42px;color:var(--crimson);margin-bottom:8px}
+    .profile-info .title{font-size:20px;color:var(--brand-blue);font-weight:700;margin-bottom:12px}
+    .profile-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:15px}
+    .meta-item{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:15px}
+    .meta-item strong{color:#333}
+    .profile-links{display:flex;gap:12px;flex-wrap:wrap}
+    .profile-link{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));color:#fff;text-decoration:none;border-radius:25px;font-weight:600;transition:transform 0.3s,box-shadow 0.3s}
+    .profile-link:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(178,0,255,0.4)}
+    .profile-link.email{background:linear-gradient(90deg,var(--crimson),var(--neon-purple))}
+    
+    /* Content */
+    .profile-content{padding:50px}
+    .section{margin-bottom:45px}
+    .section h2{font-size:32px;color:var(--brand-blue);margin-bottom:20px;border-bottom:3px solid var(--neon-purple);padding-bottom:10px}
+    .section p{font-size:18px;line-height:1.8;color:#333;margin-bottom:15px}
+    .aspirations-box{background:linear-gradient(135deg,rgba(30,144,255,0.05),rgba(178,0,255,0.05));padding:30px;border-radius:12px;border-left:5px solid var(--brand-blue);margin-bottom:25px}
+    .aspirations-box h3{color:var(--crimson);margin-bottom:15px;font-size:24px}
+    .aspirations-list{list-style:none;padding:0}
+    .aspirations-list li{padding:10px 0 10px 30px;position:relative;color:var(--muted);font-size:17px;line-height:1.6}
+    .aspirations-list li:before{content:'→';position:absolute;left:0;color:var(--brand-blue);font-weight:900;font-size:20px}
+    
+    .experience-timeline{margin-top:30px}
+    .timeline-item{background:linear-gradient(180deg,#fafafe,#fff);padding:25px;border-radius:12px;margin-bottom:20px;border-left:4px solid var(--crimson);box-shadow:0 4px 15px rgba(0,0,0,0.06)}
+    .timeline-item h4{color:var(--brand-blue);font-size:20px;margin-bottom:10px}
+    .timeline-item .position{color:var(--crimson);font-weight:700;margin-bottom:8px}
+    .timeline-item p{color:var(--muted);line-height:1.7}
+    
+    .highlight-box{background:linear-gradient(90deg,rgba(220,20,60,0.08),rgba(178,0,255,0.08));padding:25px;border-radius:12px;border:2px solid var(--neon-purple);margin-top:30px}
+    .highlight-box h3{color:var(--crimson);margin-bottom:15px;font-size:22px}
+    .highlight-box p{color:#333;font-size:17px;line-height:1.7}
+    
+    footer{background:linear-gradient(90deg,var(--metallic-grey),#666);color:#fff;text-align:center;padding:20px;font-size:14px}
+    .logo{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--neon-purple),var(--brand-blue));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:24px;box-shadow:0 4px 15px rgba(178,0,255,0.4);cursor:pointer;text-decoration:none;transition:transform 0.3s}
+    .logo:hover{animation:bounce 0.6s ease}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    
+    /* Animated decorative elements styles */
+    .animated-arrow {
+      position: fixed;
+      z-index: 10;
+      border-radius: 50%;
+      transition: all 0.6s ease;
+      animation: float 3s ease-in-out infinite;
+      color: white;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    
+    /* Background positioned arrows */
+    .arrow-1 { right: 5%; padding: 6px; }
+    .arrow-2 { left: 3%; padding: 8px; }
+    .arrow-3 { right: 8%; padding: 7px; }
+    .arrow-4 { left: 5%; padding: 9px; }
+    .arrow-5 { right: 2%; padding: 5px; }
+    
+    /* Trail effects */
+    .arrow-trail {
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to top, transparent, #B200FF80, #B200FF, #B200FFCC, transparent);
+      border-radius: 3px;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px #B200FF40;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-8px) rotate(2deg); }
+      66% { transform: translateY(-4px) rotate(-1deg); }
+    }
+    
+    /* Arrow SVG styles */
+    .arrow-svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    @media (max-width:768px){
+      .profile-header{flex-direction:column;text-align:center}
+      .profile-info h1{font-size:32px}
+      .profile-photo,.profile-photo-placeholder{width:150px;height:150px}
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <!-- Header Section -->
+    <header class="profile-header">
+      <a href="lafleche.html" class="logo" aria-label="Lafleche Home">LF</a>
+      <img src="founder.jpg" alt="Raphael Girard, CEO of Lafleche" class="profile-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="profile-photo-placeholder" style="display:none">RG</div>
+      
+      <div class="profile-info">
+        <h1>Raphael Girard</h1>
+        <div class="title">CEO & Founder, Lafleche</div>
+        <div class="profile-meta">
+          <div class="meta-item"><strong>Age:</strong> 23 years old</div>
+          <div class="meta-item"><strong>Born:</strong> January 12, 2002</div>
+          <div class="meta-item"><strong>Location:</strong> Longueuil, QC</div>
+        </div>
+        <div class="profile-links">
+          <a href="https://www.linkedin.com/in/raphael-girard" class="profile-link" target="_blank" rel="noopener">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:xxraphaelgirardxx@gmail.com" class="profile-link email">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="profile-content">
+      <!-- Aspirations Section -->
+      <section class="section">
+        <h2>My Vision & Aspirations</h2>
+        <div class="aspirations-box">
+          <h3>Driving the Future of Logistics Through Innovation</h3>
+          <ul class="aspirations-list">
+            <li><strong>Revolutionize traditional logistics</strong> by integrating AI-driven solutions that reduce costs, improve efficiency, and minimize environmental impact.</li>
+            <li><strong>Build a transparent, reliable logistics ecosystem</strong> where every shipment is tracked, optimized, and delivered with precision.</li>
+            <li><strong>Empower businesses of all sizes</strong> to compete on a global scale by providing enterprise-grade logistics technology at accessible prices.</li>
+            <li><strong>Lead the industry toward carbon neutrality</strong> by 2027 through smart route optimization and sustainable practices.</li>
+            <li><strong>Create a company culture</strong> that values continuous learning, operational excellence, and innovation at every level.</li>
+          </ul>
+        </div>
+        <p>At just 23, I'm driven by the belief that technology and hands-on operational experience can transform an entire industry. My goal isn't just to build a profitable company—it's to redefine what's possible in transport and logistics.</p>
+      </section>
+
+      <!-- Journey & Experience Section -->
+      <section class="section">
+        <h2>My Journey: From Operations to Innovation</h2>
+        <p>My path to founding Lafleche wasn't traditional—it was forged on the warehouse floor, behind the controls of heavy machinery, and in the late-night problem-solving sessions that define real operations. Here's how I've applied my aspirations into real, operating companies:</p>
+
+        <div class="experience-timeline">
+          <div class="timeline-item">
+            <h4>Tyt — Operations Supervisor (2021-2025)</h4>
+            <div class="position">Heavy Machinery Operations & Evening Supervision</div>
+            <p><strong>What I Learned:</strong> This role was my foundation. Operating a Loader 370, managing rail operations with Rail King systems, and supervising evening crews taught me that efficiency isn't theoretical—it's measured in minutes saved, fuel conserved, and zero-incident days.</p>
+            <p><strong>Applied Innovation:</strong> I began tracking patterns in downtime, equipment failures, and loading inefficiencies. I realized that 30% of our delays came from poor load sequencing and another 20% from reactive maintenance. This sparked my interest in predictive systems and optimization algorithms—ideas that would later become core to Lafleche's AI models.</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Mucho Burrito — Manager & Culinary Lead (2019-2021)</h4>
+            <div class="position">Inventory Management, Team Leadership & Operations</div>
+            <p><strong>What I Learned:</strong> Managing a fast-paced restaurant taught me about inventory turns, demand forecasting, and the importance of real-time data. Every wasted ingredient was lost profit; every stockout was a disappointed customer.</p>
+            <p><strong>Applied Innovation:</strong> I implemented a simple spreadsheet-based forecasting system that reduced food waste by 18% and cut ordering time in half. This experience showed me that even basic data analysis could drive significant results—imagine what advanced AI could do in logistics.</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Academic Foundation — AI & Psychology</h4>
+            <div class="position">CEGEP CDI (AI Specialist, GenAI Developer) & Vanier College (Sports Psychology)</div>
+            <p><strong>What I Learned:</strong> My studies in AI gave me the technical toolkit to build predictive models, optimize complex systems, and understand machine learning at a deep level. Sports psychology taught me about motivation, team dynamics, and performance under pressure.</p>
+            <p><strong>Applied Innovation:</strong> I combined these disciplines to understand not just <em>what</em> technology can do, but <em>how</em> people adopt it. This led to Lafleche's human-centered approach: AI that augments workers rather than replaces them, with transparent explanations for every recommendation.</p>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h3>🚀 Founding Lafleche: Turning Vision into Reality</h3>
+          <p>In 2024, I took the leap. Armed with operational experience from heavy machinery and warehouse management, technical skills from my AI studies, and a clear vision for the future, I founded <strong>Lafleche</strong>.</p>
+          <p>The company is built on three pillars I witnessed firsthand: <strong>reliability</strong> (learned from supervising critical rail operations), <strong>efficiency</strong> (honed through years of optimizing workflows), and <strong>transparency</strong> (because I know operators and managers need to trust the systems they use).</p>
+          <p>Today, Lafleche serves clients across North America, delivering provable results: 25-35% fuel savings, 99.95% uptime, and real-time visibility that transforms how businesses manage logistics. We're not just talking about innovation—we're living it, measuring it, and scaling it.</p>
+        </div>
+      </section>
+
+      <!-- Personal Philosophy -->
+      <section class="section">
+        <h2>Leadership Philosophy</h2>
+        <p><strong>Lead from the floor, not the office.</strong> I believe the best CEOs understand every layer of their business. I've operated the machinery, managed the teams, and solved the problems that keep operations running. This isn't just background—it's my competitive advantage.</p>
+        <p><strong>Technology serves people, not the other way around.</strong> AI and automation are tools to empower workers, improve safety, and free teams to focus on strategic thinking. Every system we build at Lafleche is designed to be explainable, trustworthy, and human-centered.</p>
+        <p><strong>Results over rhetoric.</strong> I measure success in fuel gallons saved, downtime hours eliminated, and carbon emissions prevented—not in buzzwords. If we can't prove our value with data, we haven't earned our clients' trust.</p>
+        <p><strong>Build for the long term.</strong> Lafleche is committed to sustainability, ethical AI practices, and partnerships built on mutual success. Quick wins matter, but lasting impact is what drives me.</p>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="section">
+        <h2>Let's Connect</h2>
+        <p>Whether you're interested in partnering with Lafleche, exploring AI-driven logistics solutions, or simply want to discuss the future of the industry, I'd love to hear from you.</p>
+        <p>Reach out via <a href="mailto:xxraphaelgirardxx@gmail.com" style="color:var(--brand-blue);font-weight:700">email</a> or connect with me on <a href="https://www.linkedin.com/in/raphael-girard" target="_blank" rel="noopener" style="color:var(--brand-blue);font-weight:700">LinkedIn</a>. Let's build the future of logistics together.</p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Raphael Girard | CEO & Founder, Lafleche Transport & Logistics</p>
+      <p>Driven by innovation • Grounded in operations • Committed to excellence</p>
+      <p style="margin-top:15px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="lafleche.html" style="color:#fff;text-decoration:none;padding:10px 20px;background:linear-gradient(90deg,var(--metallic-grey),#666);border-radius:25px;display:inline-block;font-weight:700;transition:transform 0.3s">
+          ← Back to Home
+        </a>
+        <a href="professional-cv.html" style="color:#fff;text-decoration:none;padding:10px 20px;background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));border-radius:25px;display:inline-block;font-weight:700;transition:transform 0.3s">
+          📄 View Professional CV
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Animated decorative elements with trails -->
+  <div class="animated-arrow arrow-1" id="arrow1">
+      <div class="arrow-trail" id="trail1"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Train Icon -->
+        <rect x="3" y="8" width="18" height="8" rx="2" ry="2"/>
+        <rect x="5" y="10" width="3" height="2"/>
+        <rect x="9" y="10" width="3" height="2"/>
+        <rect x="13" y="10" width="3" height="2"/>
+        <rect x="17" y="10" width="2" height="2"/>
+        <circle cx="6" cy="17" r="1.5"/>
+        <circle cx="18" cy="17" r="1.5"/>
+        <rect x="2" y="6" width="2" height="4"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-2" id="arrow2">
+      <div class="arrow-trail" id="trail2"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Car Icon -->
+        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-3" id="arrow3">
+      <div class="arrow-trail" id="trail3"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Bus Icon -->
+        <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-4" id="arrow4">
+      <div class="arrow-trail" id="trail4"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Plane Icon -->
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-5" id="arrow5">
+      <div class="arrow-trail" id="trail5"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Boat Icon -->
+        <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.32-.42-.58-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.46.26-.58.5s-.14.52-.06.78L3.95 19z"/>
+      </svg>
+  </div>
+
+  <script>
+    // Theme colors
+    const themeColors = {
+      metallicGrey: '#A9A9A9',
+      crimson: '#DC143C',
+      brandBlue: '#1E90FF',
+      neonPurple: '#B200FF'
+    };
+
+    // Color gradients for each arrow based on scroll position
+    const colorGradients = [
+      [themeColors.brandBlue, themeColors.neonPurple],
+      [themeColors.crimson, themeColors.brandBlue],
+      [themeColors.neonPurple, themeColors.crimson],
+      [themeColors.metallicGrey, themeColors.neonPurple],
+      [themeColors.brandBlue, themeColors.crimson]
+    ];
+
+    // Arrow sequence data - each arrow appears at different scroll percentages
+    const arrowSequence = [
+      { startPercent: 0, endPercent: 0.2, position: { right: '5%' } },
+      { startPercent: 0.15, endPercent: 0.4, position: { left: '3%' } },
+      { startPercent: 0.3, endPercent: 0.6, position: { right: '8%' } },
+      { startPercent: 0.5, endPercent: 0.8, position: { left: '5%' } },
+      { startPercent: 0.7, endPercent: 0.95, position: { right: '2%' } }
+    ];
+
+    // Function to interpolate between two colors
+    function interpolateColor(color1, color2, factor) {
+      const rgb1 = hexToRgb(color1);
+      const rgb2 = hexToRgb(color2);
+      
+      const r = Math.round(rgb1.r + (rgb2.r - rgb1.r) * factor);
+      const g = Math.round(rgb1.g + (rgb2.g - rgb1.g) * factor);
+      const b = Math.round(rgb1.b + (rgb2.b - rgb1.b) * factor);
+      
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Convert hex to RGB
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    // Update arrow visibility and position based on scroll
+    function updateArrowsSequence() {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const clampedPercent = Math.max(0, Math.min(1, scrollPercent));
+
+      for (let i = 1; i <= 5; i++) {
+        const arrow = document.getElementById(`arrow${i}`);
+        const trail = document.getElementById(`trail${i}`);
+        const sequence = arrowSequence[i - 1];
+        const gradient = colorGradients[i - 1];
+        
+        // Calculate visibility based on scroll position
+        let visibility = 0;
+        if (clampedPercent >= sequence.startPercent && clampedPercent <= sequence.endPercent) {
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          
+          // Fade in and out effect
+          if (sequenceProgress <= 0.2) {
+            visibility = sequenceProgress / 0.2; // Fade in
+          } else if (sequenceProgress >= 0.8) {
+            visibility = (1 - sequenceProgress) / 0.2; // Fade out
+          } else {
+            visibility = 1; // Fully visible
+          }
+        }
+
+        // Set arrow opacity and display
+        arrow.style.opacity = visibility;
+        arrow.style.display = visibility > 0 ? 'block' : 'none';
+
+        if (visibility > 0) {
+          // Position arrow based on scroll progress within its sequence
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          const topPosition = 20 + (sequenceProgress * 60); // Move from 20% to 80% of viewport
+          
+          arrow.style.top = `${topPosition}%`;
+          
+          // Apply positioning
+          if (sequence.position.right) {
+            arrow.style.right = sequence.position.right;
+            arrow.style.left = 'auto';
+          } else {
+            arrow.style.left = sequence.position.left;
+            arrow.style.right = 'auto';
+          }
+          
+          // Color interpolation
+          const interpolatedColor = interpolateColor(gradient[0], gradient[1], clampedPercent);
+          arrow.style.background = `linear-gradient(135deg, ${gradient[0]}, ${interpolatedColor})`;
+          arrow.style.boxShadow = `0 4px 15px ${interpolatedColor}40`;
+          
+          // Trail effect that spans the entire visible movement path (upward)
+          const totalMovementDistance = 60; // From 20% to 80% = 60% of viewport
+          const currentMovementPercent = sequenceProgress * totalMovementDistance;
+          const trailHeight = Math.max(10, currentMovementPercent * (window.innerHeight / 100));
+          
+          trail.style.height = `${trailHeight}px`;
+          trail.style.bottom = `calc(100% + 5px)`; // Trail extends upward from arrow
+          trail.style.background = `linear-gradient(to top, 
+            transparent, 
+            #B200FF60, 
+            #B200FF, 
+            #B200FFCC, 
+            transparent)`;
+          trail.style.opacity = visibility * 0.9;
+          trail.style.boxShadow = `0 0 15px #B200FF60`;
+        }
+      }
+
+      // Hide all arrows when reaching the very bottom (95%+)
+      if (clampedPercent >= 0.95) {
+        for (let i = 1; i <= 5; i++) {
+          const arrow = document.getElementById(`arrow${i}`);
+          arrow.style.opacity = 0;
+          arrow.style.display = 'none';
+        }
+      }
+    }
+
+    // Initialize and set up scroll listener
+    document.addEventListener('DOMContentLoaded', function() {
+      updateArrowsSequence();
+      
+      // Throttled scroll listener for better performance
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            updateArrowsSequence();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

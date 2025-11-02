@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lafleche — Transport & Logistics Solutions</title>
+  <meta name="description" content="Lafleche delivers reliable transport and logistics services across North America with AI-driven efficiency and 24/7 support." />
+  <style>
+    :root{
+      --metallic-grey:#A9A9A9;
+      --crimson:#DC143C;
+      --brand-blue:#1E90FF;
+      --neon-purple:#B200FF;
+      --bg:#0a0a0f;
+      --text:#111;
+      --muted:#555;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:linear-gradient(180deg,var(--bg),#0f1220);color:var(--text);overflow-x:hidden}
+    
+    /* Header */
+    header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:15px 5%;
+      background:linear-gradient(90deg,var(--metallic-grey),#f7f7f7);
+      box-shadow:0 4px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .logo-container{display:flex;align-items:center;gap:12px}
+    .logo{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--neon-purple),var(--brand-blue));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;box-shadow:0 4px 15px rgba(178,0,255,0.4)}
+    .company-name{font-size:24px;font-weight:800;color:var(--crimson);letter-spacing:-0.5px}
+    
+    /* Desktop Navigation */
+    nav{display:flex;align-items:center}
+    nav a{margin-left:24px;color:#222;text-decoration:none;font-weight:600;transition:color 0.3s}
+    nav a:hover{color:var(--brand-blue)}
+    
+    /* Mobile Menu */
+    .mobile-menu-btn{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      padding:5px;
+      background:none;
+      border:none;
+      z-index:1001;
+    }
+    .mobile-menu-btn span{
+      width:25px;
+      height:3px;
+      background:var(--crimson);
+      margin:3px 0;
+      transition:0.3s;
+      border-radius:2px;
+    }
+    .mobile-menu-btn.active span:nth-child(1){transform:rotate(-45deg) translate(-5px, 6px)}
+    .mobile-menu-btn.active span:nth-child(2){opacity:0}
+    .mobile-menu-btn.active span:nth-child(3){transform:rotate(45deg) translate(-5px, -6px)}
+    
+    .mobile-nav{
+      display:none;
+      position:fixed;
+      top:70px;
+      left:0;
+      right:0;
+      background:linear-gradient(180deg,rgba(247,247,247,0.98),rgba(169,169,169,0.98));
+      backdrop-filter:blur(15px);
+      padding:20px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.2);
+      z-index:999;
+    }
+    .mobile-nav.active{display:block}
+    .mobile-nav a{
+      display:block;
+      padding:15px 0;
+      color:#222;
+      text-decoration:none;
+      font-weight:600;
+      font-size:18px;
+      border-bottom:1px solid rgba(0,0,0,0.1);
+      transition:color 0.3s;
+    }
+    .mobile-nav a:hover{color:var(--brand-blue)}
+    .mobile-nav a:last-child{border-bottom:none}
+    
+    /* Body and layout */
+    body{background:linear-gradient(180deg,var(--bg),#0f1220);color:var(--text);overflow-x:hidden}
+    
+    /* Hero Section */
+    .hero{background:linear-gradient(135deg,rgba(178,0,255,0.05),rgba(30,144,255,0.05));padding:100px 5% 80px;text-align:center;color:#fff;margin-top:70px}
+    .hero h1{font-size:48px;margin-bottom:20px;background:linear-gradient(90deg,var(--crimson),var(--neon-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:20px;color:#ddd;max-width:700px;margin:0 auto 30px;line-height:1.6}
+    .cta-btn{display:inline-block;padding:16px 32px;background:linear-gradient(90deg,var(--crimson),var(--neon-purple));color:#fff;border:none;border-radius:50px;font-size:18px;font-weight:700;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;text-decoration:none}
+    .cta-btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(178,0,255,0.5)}
+    
+    /* Main Content */
+    .container{max-width:1200px;margin:0 auto;padding:60px 5%;background:#fff;border-radius:12px;margin-top:-40px;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+    
+    /* Company Intro */
+    .intro{margin-bottom:60px}
+    .intro h2{font-size:36px;color:var(--brand-blue);margin-bottom:20px;text-align:center}
+    .intro p{font-size:18px;line-height:1.8;color:var(--muted);margin-bottom:15px}
+    
+    /* Goals & Achievements */
+    .achievements{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:60px}
+    .achievement-card{background:linear-gradient(135deg,#f8f8ff,#fff);padding:24px;border-radius:12px;box-shadow:0 6px 20px rgba(30,40,80,0.1);border-left:4px solid var(--brand-blue)}
+    .achievement-card h3{color:var(--crimson);margin-bottom:10px;font-size:22px}
+    .achievement-card p{color:var(--muted);line-height:1.6}
+    .achievement-card .stat{font-size:36px;font-weight:900;background:linear-gradient(90deg,var(--neon-purple),var(--brand-blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    
+    /* Review Carousel */
+    .reviews-section{margin-bottom:60px;background:linear-gradient(180deg,#fafafe,#fff);padding:40px;border-radius:12px}
+    .reviews-section h2{font-size:36px;color:var(--brand-blue);margin-bottom:30px;text-align:center}
+    .carousel{position:relative;overflow:hidden;max-width:800px;margin:0 auto}
+    .carousel-track{display:flex;transition:transform 0.5s ease-in-out}
+    .review{min-width:100%;padding:30px;background:#fff;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.08)}
+    .review p{font-size:18px;font-style:italic;color:#333;margin-bottom:20px;line-height:1.7}
+    .review .author{font-weight:700;color:var(--crimson);font-size:16px}
+    .review .company{color:var(--muted);font-size:14px}
+    .carousel-controls{text-align:center;margin-top:20px}
+    .carousel-btn{background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));color:#fff;border:none;padding:10px 20px;margin:0 8px;border-radius:50px;cursor:pointer;font-weight:600;transition:transform 0.3s}
+    .carousel-btn:hover{transform:scale(1.05)}
+    
+    /* Need More Convincing */
+    .convincing{text-align:center;margin-bottom:60px;padding:40px;background:linear-gradient(90deg,rgba(220,20,60,0.05),rgba(178,0,255,0.05));border-radius:12px}
+    .convincing h2{font-size:32px;color:var(--crimson);margin-bottom:20px}
+    .convincing p{font-size:18px;color:var(--muted);margin-bottom:25px}
+    
+    /* Contact Form */
+    .contact{background:linear-gradient(180deg,#f8f8ff,#fff);padding:40px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+    .contact h2{font-size:36px;color:var(--brand-blue);margin-bottom:20px;text-align:center}
+    .contact p{text-align:center;color:var(--muted);margin-bottom:30px}
+    .form-group{margin-bottom:20px}
+    .form-group label{display:block;font-weight:600;color:#333;margin-bottom:8px}
+    .form-group input,.form-group textarea{width:100%;padding:12px;border:2px solid #ddd;border-radius:8px;font-size:16px;transition:border-color 0.3s}
+    .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--brand-blue)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .submit-btn{width:100%;padding:16px;background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));color:#fff;border:none;border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;transition:transform 0.3s}
+    .submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(178,0,255,0.4)}
+    
+    /* Footer */
+    footer{background:linear-gradient(90deg,var(--metallic-grey),#333);color:#fff;text-align:center;padding:30px 5%;margin-top:40px}
+    footer p{margin-bottom:10px}
+    
+    /* Chatbot */
+    .chatbot-container{position:fixed;bottom:20px;right:20px;z-index:1000}
+    .chatbot-toggle{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--crimson),var(--neon-purple));color:#fff;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(178,0,255,0.5);display:flex;align-items:center;justify-content:center;font-size:28px;transition:transform 0.3s}
+    .chatbot-toggle:hover{transform:scale(1.1)}
+    .chatbot-window{position:absolute;bottom:80px;right:0;width:350px;height:500px;background:#fff;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.3);display:none;flex-direction:column;overflow:hidden}
+    .chatbot-window.active{display:flex}
+    .chatbot-header{background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));color:#fff;padding:15px;font-weight:700;font-size:18px}
+    .chatbot-messages{flex:1;padding:20px;overflow-y:auto;background:#fafafa}
+    .chat-message{margin-bottom:15px;display:flex;gap:10px}
+    .chat-message.bot{flex-direction:row}
+    .chat-message.user{flex-direction:row-reverse}
+    .message-bubble{max-width:70%;padding:12px 16px;border-radius:12px;line-height:1.5;font-size:14px}
+    .chat-message.bot .message-bubble{background:#fff;color:#333;border:1px solid #ddd}
+    .chat-message.user .message-bubble{background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));color:#fff}
+    .message-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--neon-purple),var(--brand-blue));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+    .chat-message.user .message-avatar{background:linear-gradient(90deg,var(--metallic-grey),#666)}
+    .chatbot-input{display:flex;gap:8px;padding:15px;border-top:1px solid #ddd;background:#fff}
+    .chatbot-input input{flex:1;padding:10px;border:1px solid #ddd;border-radius:20px;font-size:14px}
+    .chatbot-input button{padding:10px 20px;background:linear-gradient(90deg,var(--brand-blue),var(--neon-purple));color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:700}
+    .faq-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .faq-btn{padding:8px 12px;background:#fff;border:2px solid var(--brand-blue);color:var(--brand-blue);border-radius:20px;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.3s}
+    .faq-btn:hover{background:var(--brand-blue);color:#fff}
+    
+    /* Animated decorative elements styles */
+    .animated-arrow {
+      position: fixed;
+      z-index: 10;
+      border-radius: 50%;
+      transition: all 0.6s ease;
+      animation: float 3s ease-in-out infinite;
+      color: white;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    
+    /* Background positioned arrows */
+    .arrow-1 { right: 5%; padding: 6px; }
+    .arrow-2 { left: 3%; padding: 8px; }
+    .arrow-3 { right: 8%; padding: 7px; }
+    .arrow-4 { left: 5%; padding: 9px; }
+    .arrow-5 { right: 2%; padding: 5px; }
+    
+    /* Trail effects */
+    .arrow-trail {
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to top, transparent, #B200FF80, #B200FF, #B200FFCC, transparent);
+      border-radius: 3px;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px #B200FF40;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-8px) rotate(2deg); }
+      66% { transform: translateY(-4px) rotate(-1deg); }
+    }
+    
+    /* Arrow SVG styles */
+    .arrow-svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    @media (max-width:768px){
+      .hero h1{font-size:36px}
+      .form-row{grid-template-columns:1fr}
+      .chatbot-window{width:calc(100vw - 40px);height:400px}
+      
+      /* Mobile Header */
+      header{padding:10px 5%}
+      .logo{width:40px;height:40px;font-size:16px}
+      .company-name{font-size:20px}
+      nav{display:none}
+      .mobile-menu-btn{display:flex}
+      
+      /* Mobile responsive adjustments */
+      .hero{padding:60px 5% 40px}
+      .container{margin-top:-20px;padding:40px 5%}
+      .achievements{grid-template-columns:1fr}
+      .carousel-controls{flex-direction:column;gap:10px}
+      .carousel-btn{width:100%;margin:0}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <div class="logo" aria-label="Lafleche Logo">LF</div>
+      <div class="company-name">Lafleche</div>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="lafleche-expertise.html">Expertise</a>
+      <a href="personal-intro.html">Founder</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle mobile menu" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="lafleche-expertise.html">Expertise</a>
+    <a href="personal-intro.html">Founder</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Reliable Transport & Logistics Solutions</h1>
+    <p>Delivering excellence across North America with AI-driven efficiency, real-time tracking, and 24/7 support. Your cargo, our priority.</p>
+    <a href="#contact" class="cta-btn">Get a Quote</a>
+  </section>
+
+  <!-- Main Content Container -->
+  <div class="container">
+    <!-- Company Introduction -->
+    <section id="about" class="intro">
+      <h2>About Lafleche</h2>
+      <p>Founded with a vision to revolutionize the transport and logistics industry, Lafleche combines decades of operational expertise with cutting-edge technology to deliver unparalleled service. We specialize in transloading, warehousing, inventory management, and cross-border freight solutions.</p>
+      <p>Our mission is simple: to provide reliable, efficient, and transparent logistics services that help businesses thrive. From small shipments to large-scale operations, we handle every load with precision and care.</p>
+      <p>At Lafleche, we believe in building long-term partnerships based on trust, innovation, and exceptional service. Our team of logistics professionals works around the clock to ensure your cargo arrives on time, every time.</p>
+    </section>
+
+    <!-- Goals & Achievements -->
+    <section id="achievements" class="achievements">
+      <div class="achievement-card">
+        <div class="stat">15,000+</div>
+        <h3>Deliveries Completed</h3>
+        <p>Successfully delivered over 15,000 shipments across North America with a 99.7% on-time delivery rate.</p>
+      </div>
+      <div class="achievement-card">
+        <div class="stat">24/7</div>
+        <h3>Customer Support</h3>
+        <p>Round-the-clock monitoring and support ensure your cargo is tracked and secure at every stage of transit.</p>
+      </div>
+      <div class="achievement-card">
+        <div class="stat">98%</div>
+        <h3>Customer Satisfaction</h3>
+        <p>Our commitment to excellence has earned us a 98% satisfaction rating from our diverse client base.</p>
+      </div>
+      <div class="achievement-card">
+        <div class="stat">AI-Powered</div>
+        <h3>Smart Logistics</h3>
+        <p>Advanced AI algorithms optimize routes, reduce costs, and improve delivery times by up to 30%.</p>
+      </div>
+      <div class="achievement-card">
+        <div class="stat">500K+</div>
+        <h3>Tons Transported</h3>
+        <p>Over half a million tons of cargo safely transported with zero major incidents in the past year.</p>
+      </div>
+      <div class="achievement-card">
+        <div class="stat">Carbon Neutral</div>
+        <h3>Sustainability Goal</h3>
+        <p>Committed to achieving carbon-neutral operations by 2027 through fleet optimization and renewable energy.</p>
+      </div>
+    </section>
+
+    <!-- Reviews Carousel -->
+    <section id="reviews" class="reviews-section">
+      <h2>What Our Clients Say</h2>
+      <div class="carousel">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="review">
+            <p>"Lafleche transformed our supply chain. Their AI-powered routing saved us 25% on shipping costs and improved delivery times significantly. The team is professional, responsive, and truly cares about our success."</p>
+            <div class="author">Sarah Mitchell</div>
+            <div class="company">Supply Chain Director, TechNova Industries</div>
+          </div>
+          <div class="review">
+            <p>"We've worked with many logistics providers, but Lafleche stands out. Their real-time tracking system gives us complete visibility, and their customer support team goes above and beyond every single time."</p>
+            <div class="author">James Rodriguez</div>
+            <div class="company">Operations Manager, BuildRight Construction</div>
+          </div>
+          <div class="review">
+            <p>"Reliability is everything in our business, and Lafleche delivers. Not once have they missed a deadline. Their warehouse solutions and inventory management have streamlined our entire operation."</p>
+            <div class="author">Emily Chen</div>
+            <div class="company">CEO, Quantum Medical Supplies</div>
+          </div>
+          <div class="review">
+            <p>"The transition to Lafleche was seamless. Their team handled our cross-border shipments with expertise, navigating customs and regulations effortlessly. We've seen a 40% improvement in efficiency."</p>
+            <div class="author">Michael Thompson</div>
+            <div class="company">Logistics Coordinator, GlobalTrade Partners</div>
+          </div>
+          <div class="review">
+            <p>"Lafleche's commitment to sustainability aligns perfectly with our values. They're not just moving cargo—they're helping us build a greener future. Exceptional service with a conscience."</p>
+            <div class="author">Diana Patel</div>
+            <div class="company">Sustainability Officer, EcoGoods Inc.</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="moveCarousel(-1)">← Previous</button>
+        <button class="carousel-btn" onclick="moveCarousel(1)">Next →</button>
+      </div>
+    </section>
+
+    <!-- Need More Convincing Section -->
+    <section class="convincing">
+      <h2>Need More Convincing?</h2>
+      <p>Discover how Lafleche can optimize your logistics operations, reduce costs, and improve delivery performance. Let our track record speak for itself.</p>
+      <a href="personal-intro.html" class="cta-btn">Meet Our Founder</a>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <p>Ready to transform your logistics? Get in touch with our team today.</p>
+      <form onsubmit="event.preventDefault();alert('Thank you for your inquiry! Our team will contact you within 24 hours.');">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell us about your logistics needs..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Lafleche Transport & Logistics. All rights reserved.</p>
+    <p>Designed with excellence • Powered by innovation</p>
+  </footer>
+
+  <!-- Chatbot Widget -->
+  <div class="chatbot-container">
+    <button class="chatbot-toggle" onclick="toggleChatbot()" aria-label="Toggle chatbot">💬</button>
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">Lafleche Assistant</div>
+      <div class="chatbot-messages" id="chatMessages">
+        <div class="chat-message bot">
+          <div class="message-avatar">LF</div>
+          <div class="message-bubble">
+            Hello! I'm the Lafleche AI Assistant. How can I help you today?
+            <div class="faq-options" id="faqOptions">
+              <button class="faq-btn" onclick="askQuestion('pricing')">Pricing</button>
+              <button class="faq-btn" onclick="askQuestion('services')">Services</button>
+              <button class="faq-btn" onclick="askQuestion('coverage')">Coverage Area</button>
+              <button class="faq-btn" onclick="askQuestion('tracking')">Tracking</button>
+              <button class="faq-btn" onclick="askQuestion('ai')">AI Technology</button>
+              <button class="faq-btn" onclick="askQuestion('contact')">Contact Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendMessage()">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Menu Script -->
+  <script>
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      
+      mobileNav.classList.toggle('active');
+      menuBtn.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const mobileNav = document.getElementById('mobileNav');
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const header = document.querySelector('header');
+      
+      if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
+        toggleMobileMenu();
+      }
+    });
+  </script>
+
+  <!-- Carousel Script -->
+  <script>
+    let currentSlide = 0;
+    const track = document.getElementById('carouselTrack');
+    const slides = track.children;
+    const totalSlides = slides.length;
+
+    function moveCarousel(direction) {
+      currentSlide += direction;
+      
+      if (currentSlide < 0) {
+        currentSlide = totalSlides - 1;
+      } else if (currentSlide >= totalSlides) {
+        currentSlide = 0;
+      }
+      
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // Auto-advance carousel every 5 seconds
+    setInterval(() => {
+      moveCarousel(1);
+    }, 5000);
+  </script>
+
+  <!-- Chatbot Script -->
+  <script>
+    const faqs = {
+      pricing: "Our pricing plans are monthly and scale with your company needs. Small companies start at $250/month. As your business grows, plans range from $1,000 to $2,500/month depending on shipment volume, routes, and service level. Contact us at xxraphaelgirardxx@gmail.com or call 514-220-8370 for a customized quote. Most clients save 25-35% compared to traditional logistics providers.",
+      services: "We offer comprehensive logistics solutions including: transloading, warehousing, inventory management, cross-border freight, AI-powered route optimization, predictive maintenance, and real-time tracking. Visit our Expertise page to learn more about our AI-driven services.",
+      coverage: "We deliver our AI solutions all over North American territories and are always looking to expand. Don't be shy to contact us for availability in your area. Reach out at xxraphaelgirardxx@gmail.com or call 514-220-8370 to discuss your location.",
+      tracking: "All shipments include real-time GPS tracking with live updates. You'll receive a tracking link via email and can monitor your cargo 24/7 through our customer portal. Our AI system provides accurate ETAs updated every 15 minutes.",
+      ai: "Our AI technology includes route optimization (30% faster deliveries), predictive maintenance (90% fewer breakdowns), inventory forecasting, and load optimization. This results in 25-35% fuel savings and 99.95% uptime for our clients.",
+      contact: "Email: xxraphaelgirardxx@gmail.com | Phone: 514-220-8370 | Address: 1565 rue Beauharnois, Longueuil, QC. We're available 24/7 for urgent inquiries. You can also fill out the contact form on this page.",
+      default: "I'm not sure about that specific question, but I can help with: pricing, services, coverage area, tracking, AI technology, and contact information. You can also reach our team directly at xxraphaelgirardxx@gmail.com or 514-220-8370."
+    };
+
+    function toggleChatbot() {
+      const chatWindow = document.getElementById('chatbotWindow');
+      chatWindow.classList.toggle('active');
+    }
+
+    function addMessage(text, isUser = false) {
+      const messagesDiv = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+      
+      const avatar = document.createElement('div');
+      avatar.className = 'message-avatar';
+      avatar.textContent = isUser ? 'You' : 'LF';
+      
+      const bubble = document.createElement('div');
+      bubble.className = 'message-bubble';
+      bubble.innerHTML = text;
+      
+      messageDiv.appendChild(avatar);
+      messageDiv.appendChild(bubble);
+      messagesDiv.appendChild(messageDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function askQuestion(topic) {
+      const question = topic.charAt(0).toUpperCase() + topic.slice(1);
+      addMessage(question, true);
+      
+      setTimeout(() => {
+        const answer = faqs[topic] || faqs.default;
+        addMessage(answer, false);
+      }, 500);
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      
+      if (message === '') return;
+      
+      addMessage(message, true);
+      input.value = '';
+      
+      setTimeout(() => {
+        const lowerMessage = message.toLowerCase();
+        let response = faqs.default;
+        
+        // Check for page navigation keywords
+        if (lowerMessage.includes('founder') || lowerMessage.includes('ceo') || lowerMessage.includes('who is responsible') || lowerMessage.includes('company ceo')) {
+          response = "You can learn more about our CEO and founder, Raphael Girard, on our Founder page. <a href='personal-intro.html' style='color:var(--brand-blue);font-weight:700'>Click here to visit the Founder page</a>.";
+          addMessage(response, false);
+          return;
+        } else if (lowerMessage.includes('expertise') || lowerMessage.includes('achievement') || lowerMessage.includes('accomplishment') || lowerMessage.includes('goal') || lowerMessage.includes('mission')) {
+          response = "Discover our AI-powered logistics solutions, achievements, and company mission on our Expertise page. <a href='lafleche-expertise.html' style='color:var(--brand-blue);font-weight:700'>Click here to visit the Expertise page</a>.";
+          addMessage(response, false);
+          return;
+        }
+        
+        if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('pricing')) {
+          response = faqs.pricing;
+        } else if (lowerMessage.includes('service') || lowerMessage.includes('what do you')) {
+          response = faqs.services;
+        } else if (lowerMessage.includes('where') || lowerMessage.includes('coverage') || lowerMessage.includes('area')) {
+          response = faqs.coverage;
+        } else if (lowerMessage.includes('track') || lowerMessage.includes('follow')) {
+          response = faqs.tracking;
+        } else if (lowerMessage.includes('ai') || lowerMessage.includes('technology') || lowerMessage.includes('artificial')) {
+          response = faqs.ai;
+        } else if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('email')) {
+          response = faqs.contact;
+        } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+          response = "Hello! I'm here to help with any questions about Lafleche's logistics services. What would you like to know?";
+        } else if (lowerMessage.includes('thank')) {
+          response = "You're welcome! Feel free to ask if you have any other questions. We're here to help 24/7!";
+        }
+        
+        addMessage(response, false);
+      }, 800);
+    }
+
+    // Theme colors
+    const themeColors = {
+      metallicGrey: '#A9A9A9',
+      crimson: '#DC143C',
+      brandBlue: '#1E90FF',
+      neonPurple: '#B200FF'
+    };
+
+    // Color gradients for each arrow based on scroll position
+    const colorGradients = [
+      [themeColors.brandBlue, themeColors.neonPurple],
+      [themeColors.crimson, themeColors.brandBlue],
+      [themeColors.neonPurple, themeColors.crimson],
+      [themeColors.metallicGrey, themeColors.neonPurple],
+      [themeColors.brandBlue, themeColors.crimson]
+    ];
+
+    // Function to interpolate between two colors
+    function interpolateColor(color1, color2, factor) {
+      const rgb1 = hexToRgb(color1);
+      const rgb2 = hexToRgb(color2);
+      
+      const r = Math.round(rgb1.r + (rgb2.r - rgb1.r) * factor);
+      const g = Math.round(rgb1.g + (rgb2.g - rgb1.g) * factor);
+      const b = Math.round(rgb1.b + (rgb2.b - rgb1.b) * factor);
+      
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Convert hex to RGB
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    // Update arrow colors based on scroll position
+    function updateArrowColors() {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const clampedPercent = Math.max(0, Math.min(1, scrollPercent));
+
+      for (let i = 1; i <= 5; i++) {
+        const arrow = document.getElementById(`arrow${i}`);
+        const gradient = colorGradients[i - 1];
+        const interpolatedColor = interpolateColor(gradient[0], gradient[1], clampedPercent);
+        
+        arrow.style.background = `linear-gradient(135deg, ${gradient[0]}, ${interpolatedColor})`;
+        arrow.style.boxShadow = `0 4px 15px ${interpolatedColor}40`;
+      }
+    }
+
+    // Initialize and set up scroll listener
+    document.addEventListener('DOMContentLoaded', function() {
+      updateArrowsSequence();
+      
+      // Throttled scroll listener for better performance
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            updateArrowsSequence();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    });
+
+    // Update arrow visibility and position based on scroll
+    function updateArrowsSequence() {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const clampedPercent = Math.max(0, Math.min(1, scrollPercent));
+
+      for (let i = 1; i <= 5; i++) {
+        const arrow = document.getElementById(`arrow${i}`);
+        const trail = document.getElementById(`trail${i}`);
+        const sequence = arrowSequence[i - 1];
+        const gradient = colorGradients[i - 1];
+        
+        // Calculate visibility based on scroll position
+        let visibility = 0;
+        if (clampedPercent >= sequence.startPercent && clampedPercent <= sequence.endPercent) {
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          
+          // Fade in and out effect
+          if (sequenceProgress <= 0.2) {
+            visibility = sequenceProgress / 0.2; // Fade in
+          } else if (sequenceProgress >= 0.8) {
+            visibility = (1 - sequenceProgress) / 0.2; // Fade out
+          } else {
+            visibility = 1; // Fully visible
+          }
+        }
+
+        // Set arrow opacity and display
+        arrow.style.opacity = visibility;
+        arrow.style.display = visibility > 0 ? 'block' : 'none';
+
+        if (visibility > 0) {
+          // Position arrow based on scroll progress within its sequence
+          const sequenceProgress = (clampedPercent - sequence.startPercent) / (sequence.endPercent - sequence.startPercent);
+          const topPosition = 20 + (sequenceProgress * 60); // Move from 20% to 80% of viewport
+          
+          arrow.style.top = `${topPosition}%`;
+          
+          // Apply positioning
+          if (sequence.position.right) {
+            arrow.style.right = sequence.position.right;
+            arrow.style.left = 'auto';
+          } else {
+            arrow.style.left = sequence.position.left;
+            arrow.style.right = 'auto';
+          }
+          
+          // Color interpolation
+          const interpolatedColor = interpolateColor(gradient[0], gradient[1], clampedPercent);
+          arrow.style.background = `linear-gradient(135deg, ${gradient[0]}, ${interpolatedColor})`;
+          arrow.style.boxShadow = `0 4px 15px ${interpolatedColor}40`;
+          
+          // Trail effect that spans the entire visible movement path (upward)
+          const totalMovementDistance = 60; // From 20% to 80% = 60% of viewport
+          const currentMovementPercent = sequenceProgress * totalMovementDistance;
+          const trailHeight = Math.max(10, currentMovementPercent * (window.innerHeight / 100));
+          
+          trail.style.height = `${trailHeight}px`;
+          trail.style.bottom = `calc(100% + 5px)`; // Trail extends upward from arrow
+          trail.style.background = `linear-gradient(to top, 
+            transparent, 
+            #B200FF60, 
+            #B200FF, 
+            #B200FFCC, 
+            transparent)`;
+          trail.style.opacity = visibility * 0.9;
+          trail.style.boxShadow = `0 0 15px #B200FF60`;
+        }
+      }
+
+      // Hide all arrows when reaching the very bottom (95%+)
+      if (clampedPercent >= 0.95) {
+        for (let i = 1; i <= 5; i++) {
+          const arrow = document.getElementById(`arrow${i}`);
+          arrow.style.opacity = 0;
+          arrow.style.display = 'none';
+        }
+      }
+    }
+
+    // Arrow sequence data - each arrow appears at different scroll percentages
+    const arrowSequence = [
+      { startPercent: 0, endPercent: 0.2, position: { right: '5%' } },
+      { startPercent: 0.15, endPercent: 0.4, position: { left: '3%' } },
+      { startPercent: 0.3, endPercent: 0.6, position: { right: '8%' } },
+      { startPercent: 0.5, endPercent: 0.8, position: { left: '5%' } },
+      { startPercent: 0.7, endPercent: 0.95, position: { right: '2%' } }
+    ];
+  </script>
+
+  <!-- Animated decorative elements with trails -->
+  <div class="animated-arrow arrow-1" id="arrow1">
+      <div class="arrow-trail" id="trail1"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Train Icon -->
+        <rect x="3" y="8" width="18" height="8" rx="2" ry="2"/>
+        <rect x="5" y="10" width="3" height="2"/>
+        <rect x="9" y="10" width="3" height="2"/>
+        <rect x="13" y="10" width="3" height="2"/>
+        <rect x="17" y="10" width="2" height="2"/>
+        <circle cx="6" cy="17" r="1.5"/>
+        <circle cx="18" cy="17" r="1.5"/>
+        <rect x="2" y="6" width="2" height="4"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-2" id="arrow2">
+      <div class="arrow-trail" id="trail2"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Car Icon -->
+        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-3" id="arrow3">
+      <div class="arrow-trail" id="trail3"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Bus Icon -->
+        <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-4" id="arrow4">
+      <div class="arrow-trail" id="trail4"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Plane Icon -->
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+  </div>
+
+  <div class="animated-arrow arrow-5" id="arrow5">
+      <div class="arrow-trail" id="trail5"></div>
+      <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Boat Icon -->
+        <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.32-.42-.58-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.46.26-.58.5s-.14.52-.06.78L3.95 19z"/>
+      </svg>
+  </div>
+</body>
+</html>
